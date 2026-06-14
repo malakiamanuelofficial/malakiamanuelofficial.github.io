@@ -1,0 +1,1686 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Malaki Amanuel — Psychology Graduate | UX Researcher</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500&family=IBM+Plex+Sans:wght@400;500;600;700&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+    <script src="https://unpkg.com/lucide@latest"></script>
+    <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><rect fill='%23EF4444' rx='8' width='100' height='100'/><text y='.85em' x='50%' text-anchor='middle' font-size='65' fill='white'>MA</text></svg>">
+    <style>
+        :root {
+            --bg: #FFFFFF;
+            --surface: #F8F9FA;
+            --surface-alt: #F1F3F4;
+            --primary: #111827;
+            --secondary: #6B7280;
+            --accent: #EF4444;
+            --accent-light: #FEE2E2;
+            --accent-dark: #DC2626;
+            --border: #E5E7EB;
+            --success: #10B981;
+            --shadow: rgba(17, 24, 39, 0.08);
+            
+            --font-heading: 'IBM Plex Sans', -apple-system, sans-serif;
+            --font-body: 'Inter', -apple-system, sans-serif;
+            --font-mono: 'IBM Plex Mono', monospace;
+            
+            --space-1: 4px;
+            --space-2: 8px;
+            --space-3: 12px;
+            --space-4: 16px;
+            --space-5: 20px;
+            --space-6: 24px;
+            --space-8: 32px;
+            --space-10: 40px;
+            --space-12: 48px;
+            --space-16: 64px;
+            --space-20: 80px;
+            --space-24: 96px;
+        }
+
+        *, *::before, *::after {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: var(--font-body);
+            background: var(--bg);
+            color: var(--primary);
+            line-height: 1.6;
+            font-size: 16px;
+            -webkit-font-smoothing: antialiased;
+        }
+
+        ::selection {
+            background: var(--accent);
+            color: white;
+        }
+
+        ::-webkit-scrollbar {
+            width: 8px;
+        }
+
+        ::-webkit-scrollbar-track {
+            background: var(--surface);
+        }
+
+        ::-webkit-scrollbar-thumb {
+            background: var(--border);
+            border-radius: 4px;
+        }
+
+        ::-webkit-scrollbar-thumb:hover {
+            background: var(--secondary);
+        }
+
+        /* Header */
+        header {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            z-index: 100;
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(8px);
+            border-bottom: 1px solid var(--border);
+        }
+
+        .header-inner {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: var(--space-4) var(--space-6);
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            font-family: var(--font-mono);
+            font-size: 0.9rem;
+            font-weight: 500;
+            color: var(--primary);
+            text-decoration: none;
+            display: flex;
+            align-items: center;
+            gap: var(--space-2);
+        }
+
+        .logo-icon {
+            width: 28px;
+            height: 28px;
+            background: var(--accent);
+            border-radius: 6px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: 0.8rem;
+            font-weight: 600;
+        }
+
+        nav {
+            display: flex;
+            gap: var(--space-8);
+        }
+
+        nav a {
+            font-size: 0.875rem;
+            color: var(--secondary);
+            text-decoration: none;
+            font-weight: 500;
+            transition: color 0.15s ease;
+            position: relative;
+        }
+
+        nav a::after {
+            content: '';
+            position: absolute;
+            bottom: -4px;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background: var(--accent);
+            transition: width 0.2s ease;
+        }
+
+        nav a:hover, nav a.active {
+            color: var(--accent);
+        }
+
+        nav a.active::after {
+            width: 100%;
+        }
+
+        /* Hero */
+        .hero {
+            padding: 160px var(--space-6) var(--space-20);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .hero-grid {
+            position: absolute;
+            inset: 0;
+            background-image: 
+                linear-gradient(var(--border) 1px, transparent 1px),
+                linear-gradient(90deg, var(--border) 1px, transparent 1px);
+            background-size: 48px 48px;
+            opacity: 0.4;
+        }
+
+        .hero-gradient {
+            position: absolute;
+            top: 0;
+            right: 0;
+            width: 500px;
+            height: 500px;
+            background: radial-gradient(circle, var(--accent-light) 0%, transparent 70%);
+            opacity: 0.5;
+        }
+
+        .hero-inner {
+            max-width: 1200px;
+            margin: 0 auto;
+            position: relative;
+            z-index: 1;
+        }
+
+        .hero-label {
+            font-family: var(--font-mono);
+            font-size: 0.8rem;
+            color: var(--accent);
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            margin-bottom: var(--space-4);
+            display: flex;
+            align-items: center;
+            gap: var(--space-3);
+        }
+
+        .hero-label::before {
+            content: '';
+            width: 24px;
+            height: 2px;
+            background: var(--accent);
+        }
+
+        .hero h1 {
+            font-family: var(--font-heading);
+            font-size: clamp(2.5rem, 5vw, 3.5rem);
+            font-weight: 700;
+            line-height: 1.15;
+            margin-bottom: var(--space-6);
+            color: var(--primary);
+            max-width: 800px;
+        }
+
+        .hero-subtitle {
+            font-size: 1.125rem;
+            color: var(--secondary);
+            max-width: 600px;
+            margin-bottom: var(--space-8);
+            line-height: 1.7;
+        }
+
+        .hero-meta {
+            display: flex;
+            gap: var(--space-6);
+            flex-wrap: wrap;
+        }
+
+        .hero-meta-item {
+            display: flex;
+            align-items: center;
+            gap: var(--space-2);
+            font-size: 0.875rem;
+            color: var(--secondary);
+        }
+
+        .hero-meta-item i {
+            color: var(--accent);
+            width: 18px;
+            height: 18px;
+        }
+
+        /* Sections */
+        section {
+            padding: var(--space-24) var(--space-6);
+        }
+
+        .section-alt {
+            background: var(--surface);
+        }
+
+        .section-inner {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .section-header {
+            margin-bottom: var(--space-12);
+        }
+
+        .section-label {
+            font-family: var(--font-mono);
+            font-size: 0.75rem;
+            color: var(--accent);
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            margin-bottom: var(--space-3);
+            display: flex;
+            align-items: center;
+            gap: var(--space-2);
+        }
+
+        .section-label::before {
+            content: '//';
+            color: var(--secondary);
+        }
+
+        .section-title {
+            font-family: var(--font-heading);
+            font-size: clamp(1.75rem, 3vw, 2.25rem);
+            font-weight: 600;
+            line-height: 1.2;
+            color: var(--primary);
+        }
+
+        .section-subtitle {
+            font-size: 1rem;
+            color: var(--secondary);
+            margin-top: var(--space-4);
+            max-width: 650px;
+            line-height: 1.7;
+        }
+
+        /* About */
+        .about-grid {
+            display: grid;
+            grid-template-columns: 1fr 1.5fr;
+            gap: var(--space-16);
+            align-items: start;
+        }
+
+        .about-image {
+            aspect-ratio: 4/5;
+            background: linear-gradient(135deg, var(--surface) 0%, var(--surface-alt) 100%);
+            border-radius: 12px;
+            border: 1px solid var(--border);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        /* NOTE: To add your photo, replace the placeholder below with your own image */
+        /* Replace "YOUR-PHOTO.jpg" with your actual photo filename */
+        .about-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            border-radius: 12px;
+        }
+
+        .about-image-placeholder {
+            text-align: center;
+            padding: var(--space-8);
+        }
+
+        .about-avatar {
+            width: 100px;
+            height: 100px;
+            background: var(--accent);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-family: var(--font-heading);
+            font-size: 2.5rem;
+            font-weight: 600;
+            color: white;
+            margin: 0 auto var(--space-4);
+        }
+
+        .about-image-text {
+            font-family: var(--font-mono);
+            font-size: 0.75rem;
+            color: var(--secondary);
+            max-width: 200px;
+            margin: 0 auto;
+            line-height: 1.5;
+        }
+
+        .about-content h2 {
+            font-family: var(--font-heading);
+            font-size: 1.5rem;
+            font-weight: 600;
+            margin-bottom: var(--space-6);
+            color: var(--primary);
+        }
+
+        .about-content p {
+            color: var(--secondary);
+            margin-bottom: var(--space-5);
+            line-height: 1.8;
+        }
+
+        .about-stats {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: var(--space-4);
+            margin-top: var(--space-8);
+            padding-top: var(--space-8);
+            border-top: 1px solid var(--border);
+        }
+
+        .stat {
+            background: var(--bg);
+            padding: var(--space-5);
+            border-radius: 8px;
+            border: 1px solid var(--border);
+            text-align: center;
+        }
+
+        .stat-value {
+            font-family: var(--font-mono);
+            font-size: 1.75rem;
+            font-weight: 600;
+            color: var(--accent);
+        }
+
+        .stat-label {
+            font-size: 0.8rem;
+            color: var(--secondary);
+            margin-top: var(--space-1);
+        }
+
+        /* Skills */
+        .skills-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: var(--space-6);
+        }
+
+        .skill-card {
+            background: var(--bg);
+            border: 1px solid var(--border);
+            border-radius: 12px;
+            padding: var(--space-6);
+            transition: border-color 0.2s ease, box-shadow 0.2s ease;
+        }
+
+        .skill-card:hover {
+            border-color: var(--accent);
+            box-shadow: 0 4px 12px var(--shadow);
+        }
+
+        .skill-card-header {
+            display: flex;
+            align-items: center;
+            gap: var(--space-3);
+            margin-bottom: var(--space-4);
+        }
+
+        .skill-card-icon {
+            width: 40px;
+            height: 40px;
+            background: var(--accent-light);
+            border-radius: 8px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--accent);
+        }
+
+        .skill-card h3 {
+            font-family: var(--font-heading);
+            font-size: 1rem;
+            font-weight: 600;
+            color: var(--primary);
+        }
+
+        .skill-list {
+            display: flex;
+            flex-wrap: wrap;
+            gap: var(--space-2);
+        }
+
+        .skill-tag {
+            font-family: var(--font-mono);
+            font-size: 0.7rem;
+            background: var(--surface);
+            color: var(--secondary);
+            padding: var(--space-1) var(--space-2);
+            border-radius: 4px;
+            border: 1px solid var(--border);
+            transition: all 0.15s ease;
+        }
+
+        .skill-tag:hover {
+            background: var(--accent-light);
+            color: var(--accent);
+            border-color: var(--accent-light);
+        }
+
+        /* Case Studies */
+        .case-grid {
+            display: grid;
+            gap: var(--space-6);
+        }
+
+        .case-card {
+            background: var(--bg);
+            border: 1px solid var(--border);
+            border-radius: 12px;
+            padding: var(--space-8);
+            transition: all 0.2s ease;
+            cursor: pointer;
+        }
+
+        .case-card:hover {
+            border-color: var(--accent);
+            box-shadow: 0 8px 24px var(--shadow);
+        }
+
+        .case-card-header {
+            display: flex;
+            align-items: flex-start;
+            justify-content: space-between;
+            gap: var(--space-4);
+            margin-bottom: var(--space-4);
+            flex-wrap: wrap;
+        }
+
+        .case-module {
+            font-family: var(--font-mono);
+            font-size: 0.7rem;
+            background: var(--accent-light);
+            color: var(--accent);
+            padding: var(--space-1) var(--space-2);
+            border-radius: 4px;
+            display: inline-block;
+        }
+
+        .case-number {
+            font-family: var(--font-mono);
+            font-size: 0.75rem;
+            color: var(--secondary);
+        }
+
+        .case-title {
+            font-family: var(--font-heading);
+            font-size: 1.2rem;
+            font-weight: 600;
+            color: var(--primary);
+            margin-bottom: var(--space-4);
+            line-height: 1.4;
+        }
+
+        .case-methods {
+            display: flex;
+            flex-wrap: wrap;
+            gap: var(--space-2);
+            margin-bottom: var(--space-5);
+        }
+
+        .case-method {
+            font-family: var(--font-mono);
+            font-size: 0.7rem;
+            background: var(--surface);
+            color: var(--secondary);
+            padding: var(--space-1) var(--space-2);
+            border-radius: 4px;
+            display: flex;
+            align-items: center;
+            gap: var(--space-1);
+        }
+
+        .case-summary {
+            color: var(--secondary);
+            font-size: 0.95rem;
+            line-height: 1.7;
+            margin-bottom: var(--space-5);
+        }
+
+        .case-footer {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding-top: var(--space-5);
+            border-top: 1px solid var(--border);
+            flex-wrap: wrap;
+            gap: var(--space-4);
+        }
+
+        .case-skills {
+            display: flex;
+            gap: var(--space-4);
+            flex-wrap: wrap;
+        }
+
+        .case-skill {
+            font-size: 0.8rem;
+            color: var(--secondary);
+            display: flex;
+            align-items: center;
+            gap: var(--space-1);
+        }
+
+        .case-skill i {
+            width: 14px;
+            height: 14px;
+            color: var(--success);
+        }
+
+        .case-link {
+            font-family: var(--font-mono);
+            font-size: 0.8rem;
+            color: var(--accent);
+            text-decoration: none;
+            display: flex;
+            align-items: center;
+            gap: var(--space-2);
+            transition: gap 0.2s ease;
+        }
+
+        .case-link:hover {
+            gap: var(--space-3);
+        }
+
+        /* Modal */
+        .modal-overlay {
+            position: fixed;
+            inset: 0;
+            background: rgba(17, 24, 39, 0.7);
+            z-index: 200;
+            display: none;
+            align-items: flex-start;
+            justify-content: center;
+            padding: var(--space-8) var(--space-4);
+            overflow-y: auto;
+        }
+
+        .modal-overlay.active {
+            display: flex;
+        }
+
+        .modal {
+            background: var(--bg);
+            border-radius: 16px;
+            max-width: 800px;
+            width: 100%;
+            max-height: 90vh;
+            overflow-y: auto;
+            position: relative;
+            margin: auto;
+        }
+
+        .modal-close {
+            position: sticky;
+            top: var(--space-4);
+            float: right;
+            margin: var(--space-4);
+            width: 36px;
+            height: 36px;
+            border: 1px solid var(--border);
+            background: var(--bg);
+            border-radius: 8px;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--secondary);
+            transition: all 0.15s ease;
+            z-index: 10;
+        }
+
+        .modal-close:hover {
+            border-color: var(--accent);
+            color: var(--accent);
+        }
+
+        .modal-inner {
+            padding: var(--space-6) var(--space-8) var(--space-10);
+            clear: both;
+        }
+
+        .modal-header {
+            margin-bottom: var(--space-8);
+        }
+
+        .modal-module {
+            font-family: var(--font-mono);
+            font-size: 0.75rem;
+            background: var(--accent-light);
+            color: var(--accent);
+            padding: var(--space-1) var(--space-3);
+            border-radius: 4px;
+            display: inline-block;
+            margin-bottom: var(--space-3);
+        }
+
+        .modal-role {
+            font-family: var(--font-mono);
+            font-size: 0.75rem;
+            color: var(--secondary);
+            margin-bottom: var(--space-2);
+        }
+
+        .modal-title {
+            font-family: var(--font-heading);
+            font-size: 1.5rem;
+            font-weight: 600;
+            line-height: 1.3;
+            color: var(--primary);
+        }
+
+        .modal-section {
+            margin-bottom: var(--space-8);
+        }
+
+        .modal-section h3 {
+            font-family: var(--font-heading);
+            font-size: 0.9rem;
+            font-weight: 600;
+            color: var(--accent);
+            margin-bottom: var(--space-3);
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        .modal-section p {
+            color: var(--secondary);
+            line-height: 1.8;
+            margin-bottom: var(--space-3);
+        }
+
+        .modal-section ul {
+            list-style: none;
+            padding: 0;
+        }
+
+        .modal-section li {
+            color: var(--secondary);
+            padding: var(--space-2) 0;
+            padding-left: var(--space-5);
+            position: relative;
+            line-height: 1.6;
+        }
+
+        .modal-section li::before {
+            content: '→';
+            position: absolute;
+            left: 0;
+            color: var(--accent);
+            font-family: var(--font-mono);
+        }
+
+        .modal-findings {
+            background: var(--surface);
+            border: 1px solid var(--border);
+            border-left: 4px solid var(--accent);
+            border-radius: 8px;
+            padding: var(--space-6);
+            margin: var(--space-6) 0;
+        }
+
+        .modal-findings h4 {
+            font-family: var(--font-heading);
+            font-size: 0.9rem;
+            font-weight: 600;
+            color: var(--primary);
+            margin-bottom: var(--space-3);
+        }
+
+        .modal-findings p {
+            margin-bottom: var(--space-2);
+        }
+
+        .modal-insight {
+            background: linear-gradient(135deg, var(--accent-light) 0%, #FEF3C7 100%);
+            border-radius: 12px;
+            padding: var(--space-6);
+            margin-top: var(--space-8);
+        }
+
+        .modal-insight h3 {
+            color: var(--primary);
+            margin-bottom: var(--space-2);
+        }
+
+        .modal-insight p {
+            color: var(--primary);
+        }
+
+        /* CV Section */
+        .cv-grid {
+            display: grid;
+            grid-template-columns: 300px 1fr;
+            gap: var(--space-12);
+            align-items: start;
+        }
+
+        .contact-card {
+            background: var(--surface);
+            border: 1px solid var(--border);
+            border-radius: 12px;
+            padding: var(--space-6);
+            position: sticky;
+            top: 100px;
+        }
+
+        .contact-card h3 {
+            font-family: var(--font-heading);
+            font-size: 1rem;
+            font-weight: 600;
+            margin-bottom: var(--space-5);
+            color: var(--primary);
+        }
+
+        .contact-item {
+            display: flex;
+            align-items: flex-start;
+            gap: var(--space-3);
+            margin-bottom: var(--space-4);
+            padding-bottom: var(--space-4);
+            border-bottom: 1px solid var(--border);
+        }
+
+        .contact-item:last-child {
+            border-bottom: none;
+            margin-bottom: 0;
+            padding-bottom: 0;
+        }
+
+        .contact-item i {
+            color: var(--accent);
+            width: 20px;
+            height: 20px;
+            flex-shrink: 0;
+            margin-top: 2px;
+        }
+
+        .contact-item-content {
+            flex: 1;
+        }
+
+        .contact-item-label {
+            font-family: var(--font-mono);
+            font-size: 0.7rem;
+            color: var(--secondary);
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            margin-bottom: var(--space-1);
+        }
+
+        .contact-item-value {
+            font-size: 0.95rem;
+            color: var(--primary);
+        }
+
+        .cv-content {
+            background: var(--bg);
+            border: 1px solid var(--border);
+            border-radius: 12px;
+            padding: var(--space-8);
+        }
+
+        .cv-content h3 {
+            font-family: var(--font-heading);
+            font-size: 1.25rem;
+            font-weight: 600;
+            margin-bottom: var(--space-6);
+            padding-bottom: var(--space-4);
+            border-bottom: 2px solid var(--accent);
+        }
+
+        .cv-plain-text {
+            font-family: var(--font-mono);
+            font-size: 0.85rem;
+            line-height: 1.8;
+            color: var(--secondary);
+            white-space: pre-wrap;
+            background: var(--surface);
+            padding: var(--space-6);
+            border-radius: 8px;
+            border: 1px solid var(--border);
+        }
+
+        /* Footer */
+        footer {
+            padding: var(--space-8) var(--space-6);
+            border-top: 1px solid var(--border);
+            text-align: center;
+        }
+
+        footer p {
+            font-family: var(--font-mono);
+            font-size: 0.8rem;
+            color: var(--secondary);
+        }
+
+        /* Animations */
+        .fade-in {
+            opacity: 0;
+            transform: translateY(20px);
+            transition: opacity 0.5s ease-out, transform 0.5s ease-out;
+        }
+
+        .fade-in.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        /* Responsive */
+        @media (max-width: 900px) {
+            .about-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .about-image {
+                max-width: 300px;
+                margin: 0 auto;
+            }
+
+            .skills-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+
+            .cv-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .contact-card {
+                position: static;
+            }
+        }
+
+        @media (max-width: 600px) {
+            nav {
+                display: none;
+            }
+
+            .hero {
+                padding: 120px var(--space-4) var(--space-16);
+            }
+
+            section {
+                padding: var(--space-16) var(--space-4);
+            }
+
+            .skills-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .about-stats {
+                grid-template-columns: 1fr;
+            }
+
+            .modal-inner {
+                padding: var(--space-4) var(--space-4) var(--space-8);
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="header-inner">
+            <a href="#" class="logo">
+                <span class="logo-icon">MA</span>
+                <span>Mr Malaki.A</span>
+            </a>
+            <nav>
+                <a href="#about">About</a>
+                <a href="#skills">Skills</a>
+                <a href="#cases">Case Studies</a>
+                <a href="#cv">CV</a>
+            </nav>
+        </div>
+    </header>
+
+    <section class="hero" id="hero">
+        <div class="hero-grid"></div>
+        <div class="hero-gradient"></div>
+        <div class="hero-inner">
+            <div class="hero-label">Psychology Graduate</div>
+            <h1>Malaki Amanuel, BSc</h1>
+            <p class="hero-subtitle">Psychology BSc, Keele University. Research experience across qualitative and quantitative methods, with a portfolio of projects spanning market analysis, experimental design, and user research.</p>
+            <div class="hero-meta">
+                <div class="hero-meta-item">
+                    <i data-lucide="graduation-cap"></i>
+                    <span>Psychology BSc</span>
+                </div>
+                <div class="hero-meta-item">
+                    <i data-lucide="flask-conical"></i>
+                    <span>6 Research Case Studies</span>
+                </div>
+                <div class="hero-meta-item">
+                    <i data-lucide="briefcase"></i>
+                    <span>Work Placement Experience</span>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="section-alt" id="about">
+        <div class="section-inner">
+            <div class="section-header fade-in">
+                <div class="section-label">Background</div>
+                <h2 class="section-title">About Me</h2>
+            </div>
+
+            <div class="about-grid">
+                <!-- PHOTO SECTION -->
+                <div class="about-image fade-in">
+                    <img src="photo.jpg" alt="Malaki Amanuel" style="width: 100%; height: 100%; object-fit: cover; display: block;">
+                </div>
+
+                <div class="about-content fade-in">
+                    <h2>Research background with real-world application</h2>
+                    <p>My psychology degree gave me a rigorous foundation in research methodology. I am familiar with study design, data analysis, ethical practice, and the discipline to follow evidence wherever it leads.</p>
+                    <p>I recently completed a work placement at Keele University working on a real startup project (MyLurah), contributed to published-quality research, and built a portfolio of projects spanning qualitative interviewing, quantitative analysis, experimental design, and science communication.</p>
+                    <p>I'm now looking to apply these skills in a role that emphasises working with data sets and research analysis.</p>
+                    
+                    <div class="about-stats">
+                        <div class="stat">
+                            <div class="stat-value">6</div>
+                            <div class="stat-label">Research Case Studies</div>
+                        </div>
+                        <div class="stat">
+                            <div class="stat-value">22+</div>
+                            <div class="stat-label">Psychology Modules</div>
+                        </div>
+                        <div class="stat">
+                            <div class="stat-value">1</div>
+                            <div class="stat-label">Work Placement</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="skills">
+        <div class="section-inner">
+            <div class="section-header fade-in">
+                <div class="section-label">Capabilities</div>
+                <h2 class="section-title">Skills & Competencies</h2>
+            </div>
+
+            <div class="skills-grid">
+                <div class="skill-card fade-in">
+                    <div class="skill-card-header">
+                        <div class="skill-card-icon">
+                            <i data-lucide="search"></i>
+                        </div>
+                        <h3>Research Methods</h3>
+                    </div>
+                    <div class="skill-list">
+                        <span class="skill-tag">Qualitative Interviews</span>
+                        <span class="skill-tag">Survey Design</span>
+                        <span class="skill-tag">Experimental Design</span>
+                        <span class="skill-tag">Thematic Analysis</span>
+                        <span class="skill-tag">Benchmark Research</span>
+                        <span class="skill-tag">Competitive Analysis</span>
+                    </div>
+                </div>
+
+                <div class="skill-card fade-in">
+                    <div class="skill-card-header">
+                        <div class="skill-card-icon">
+                            <i data-lucide="bar-chart-2"></i>
+                        </div>
+                        <h3>Analysis & Data</h3>
+                    </div>
+                    <div class="skill-list">
+                        <span class="skill-tag">Multiple Regression</span>
+                        <span class="skill-tag">ANOVA</span>
+                        <span class="skill-tag">JASP / SPSS</span>
+                        <span class="skill-tag">Projection Modelling</span>
+                        <span class="skill-tag">NVivo</span>
+                        <span class="skill-tag">Data Visualization</span>
+                    </div>
+                </div>
+
+                <div class="skill-card fade-in">
+                    <div class="skill-card-header">
+                        <div class="skill-card-icon">
+                            <i data-lucide="brain"></i>
+                        </div>
+                        <h3>Human Understanding</h3>
+                    </div>
+                    <div class="skill-list">
+                        <span class="skill-tag">User Empathy</span>
+                        <span class="skill-tag">Reflexive Practice</span>
+                        <span class="skill-tag">Mental Health Aware</span>
+                        <span class="skill-tag">Cross-cultural Research</span>
+                        <span class="skill-tag">Lived Experience</span>
+                    </div>
+                </div>
+
+                <div class="skill-card fade-in">
+                    <div class="skill-card-header">
+                        <div class="skill-card-icon">
+                            <i data-lucide="message-square"></i>
+                        </div>
+                        <h3>Communication</h3>
+                    </div>
+                    <div class="skill-list">
+                        <span class="skill-tag">Science Communication</span>
+                        <span class="skill-tag">Technical Writing</span>
+                        <span class="skill-tag">Research Proposals</span>
+                        <span class="skill-tag">Stakeholder Reports</span>
+                        <span class="skill-tag">Iterative Design</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="section-alt" id="cases">
+        <div class="section-inner">
+            <div class="section-header fade-in">
+                <div class="section-label">Portfolio</div>
+                <h2 class="section-title">Case Studies</h2>
+                <p class="section-subtitle">Research projects I underwent during my studies.</p>
+            </div>
+
+            <div class="case-grid">
+                <!-- Case 1: MyLurah -->
+                <div class="case-card fade-in" onclick="openModal('case1')">
+                    <div class="case-card-header">
+                        <span class="case-module">Work Placement</span>
+                        <span class="case-number">01 / 06</span>
+                    </div>
+                    <h3 class="case-title">Market Sizing and Growth Projection for MyLurah</h3>
+                    <div class="case-methods">
+                        <span class="case-method"><i data-lucide="trending-up"></i> Benchmark Research</span>
+                        <span class="case-method"><i data-lucide="git-compare"></i> Competitive Analysis</span>
+                        <span class="case-method"><i data-lucide="calculator"></i> Projection Modelling</span>
+                    </div>
+                    <p class="case-summary">Built an evidence-based growth and retention model for a reproductive health tech startup. Produced defensible 12-month projections of 330–610 users using triangulated benchmark data from comparable African digital health platforms.</p>
+                    <div class="case-footer">
+                        <div class="case-skills">
+                            <span class="case-skill"><i data-lucide="check"></i> Quantitative Analysis</span>
+                            <span class="case-skill"><i data-lucide="check"></i> Strategic Research</span>
+                        </div>
+                        <span class="case-link">Read Study <i data-lucide="arrow-right"></i></span>
+                    </div>
+                </div>
+
+                <!-- Case 2: Student Stress -->
+                <div class="case-card fade-in" onclick="openModal('case2')">
+                    <div class="case-card-header">
+                        <span class="case-module">Psychology Project</span>
+                        <span class="case-number">02 / 06</span>
+                    </div>
+                    <h3 class="case-title">Behavioral Drivers of Student Stress</h3>
+                    <div class="case-methods">
+                        <span class="case-method"><i data-lucide="clipboard-list"></i> Survey Design</span>
+                        <span class="case-method"><i data-lucide="chart-line"></i> Multiple Regression</span>
+                        <span class="case-method"><i data-lucide="users"></i> 149 Participants</span>
+                    </div>
+                    <p class="case-summary">Led quantitative research examining how procrastination and physical activity predict stress in university students. Found procrastination is the dominant predictor (β=.602), not exercise—key insight for student wellbeing product design.</p>
+                    <div class="case-footer">
+                        <div class="case-skills">
+                            <span class="case-skill"><i data-lucide="check"></i> Experimental Design</span>
+                            <span class="case-skill"><i data-lucide="check"></i> Statistical Analysis</span>
+                        </div>
+                        <span class="case-link">Read Study <i data-lucide="arrow-right"></i></span>
+                    </div>
+                </div>
+
+                <!-- Case 3: VR Therapy -->
+                <div class="case-card fade-in" onclick="openModal('case3')">
+                    <div class="case-card-header">
+                        <span class="case-module">Cyberpsychology</span>
+                        <span class="case-number">03 / 06</span>
+                    </div>
+                    <h3 class="case-title">Evaluating Virtual Reality as a Therapeutic Tool</h3>
+                    <div class="case-methods">
+                        <span class="case-method"><i data-lucide="book-open"></i> Literature Synthesis</span>
+                        <span class="case-method"><i data-lucide="flask"></i> Experimental Design</span>
+                        <span class="case-method"><i data-lucide="shield-check"></i> Ethics Planning</span>
+                    </div>
+                    <p class="case-summary">Designed a full research proposal comparing VR Exposure Therapy vs. CBT for agoraphobia. Identified "presence" as the critical variable and highlighted cost barriers to clinical adoption—key insights for health tech design.</p>
+                    <div class="case-footer">
+                        <div class="case-skills">
+                            <span class="case-skill"><i data-lucide="check"></i> Research Design</span>
+                            <span class="case-skill"><i data-lucide="check"></i> Gap Analysis</span>
+                        </div>
+                        <span class="case-link">Read Study <i data-lucide="arrow-right"></i></span>
+                    </div>
+                </div>
+
+                <!-- Case 4: Dual Methodology -->
+                <div class="case-card fade-in" onclick="openModal('case4')">
+                    <div class="case-card-header">
+                        <span class="case-module">Research Design</span>
+                        <span class="case-number">04 / 06</span>
+                    </div>
+                    <h3 class="case-title">Dual Methodology Research Design</h3>
+                    <div class="case-methods">
+                        <span class="case-method"><i data-lucide="flask"></i> Experimental Design</span>
+                        <span class="case-method"><i data-lucide="message-circle"></i> Phenomenological Design</span>
+                        <span class="case-method"><i data-lucide="scale"></i> Ethical Planning</span>
+                    </div>
+                    <p class="case-summary">Designed two complete research studies from scratch—one quantitative on music and memory, one qualitative on student bullying experiences. Demonstrated fluency in matching method to research question and justifying every design decision.</p>
+                    <div class="case-footer">
+                        <div class="case-skills">
+                            <span class="case-skill"><i data-lucide="check"></i> Mixed Methods</span>
+                            <span class="case-skill"><i data-lucide="check"></i> Research Ethics</span>
+                        </div>
+                        <span class="case-link">Read Study <i data-lucide="arrow-right"></i></span>
+                    </div>
+                </div>
+
+                <!-- Case 5: Science Communication -->
+                <div class="case-card fade-in" onclick="openModal('case5')">
+                    <div class="case-card-header">
+                        <span class="case-module">Science Communication</span>
+                        <span class="case-number">05 / 06</span>
+                    </div>
+                    <h3 class="case-title">Communicating Science to a Public Audience</h3>
+                    <div class="case-methods">
+                        <span class="case-method"><i data-lucide="pen-tool"></i> Public Writing</span>
+                        <span class="case-method"><i data-lucide="users"></i> Audience Analysis</span>
+                        <span class="case-method"><i data-lucide="refresh-cw"></i> Iterative Refinement</span>
+                    </div>
+                    <p class="case-summary">Wrote a critical psychology blog communicating peer-reviewed research on romantic secrecy for general audiences. Navigated the tension between scientific accuracy and public accessibility—core UX communication skill.</p>
+                    <div class="case-footer">
+                        <div class="case-skills">
+                            <span class="case-skill"><i data-lucide="check"></i> Science Communication</span>
+                            <span class="case-skill"><i data-lucide="check"></i> UX Writing</span>
+                        </div>
+                        <span class="case-link">Read Study <i data-lucide="arrow-right"></i></span>
+                    </div>
+                </div>
+
+                <!-- Case 6: Cultural Assimilation -->
+                <div class="case-card fade-in" onclick="openModal('case6')">
+                    <div class="case-card-header">
+                        <span class="case-module">Qualitative Research</span>
+                        <span class="case-number">06 / 06</span>
+                    </div>
+                    <h3 class="case-title">Lived Experiences of Cultural Assimilation and Identity</h3>
+                    <div class="case-methods">
+                        <span class="case-method"><i data-lucide="message-circle"></i> Reflexive Thematic Analysis</span>
+                        <span class="case-method"><i data-lucide="file-text"></i> Qualitative Interviewing</span>
+                        <span class="case-method"><i data-lucide="brain"></i> Experiential Epistemology</span>
+                    </div>
+                    <p class="case-summary">Applied Braun & Clarke's reflexive thematic analysis to explore how international students navigate cultural assimilation. Generated three themes: Identity as Fluid, Intersectionality Matters, and Motivation Shapes Integration.</p>
+                    <div class="case-footer">
+                        <div class="case-skills">
+                            <span class="case-skill"><i data-lucide="check"></i> Thematic Analysis</span>
+                            <span class="case-skill"><i data-lucide="check"></i> Cross-cultural Research</span>
+                        </div>
+                        <span class="case-link">Read Study <i data-lucide="arrow-right"></i></span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="cv">
+        <div class="section-inner">
+            <div class="section-header fade-in">
+                <div class="section-label">Curriculum Vitae</div>
+                <h2 class="section-title">CV</h2>
+            </div>
+
+            <div class="cv-grid">
+                <div class="contact-card fade-in">
+                    <h3>Contact</h3>
+                    
+                    <div class="contact-item">
+                        <i data-lucide="mail"></i>
+                        <div class="contact-item-content">
+                            <div class="contact-item-label">Email</div>
+                            <div class="contact-item-value"><a href="/cdn-cgi/l/email-protection" class="__cf_email__" data-cfemail="630e020f02080a020e020d16060f0c05050a000a020f23040e020a0f4d000c0e">[email&#160;protected]</a></div>
+                        </div>
+                    </div>
+                    
+                    <div class="contact-item">
+                        <i data-lucide="phone"></i>
+                        <div class="contact-item-content">
+                            <div class="contact-item-label">Phone</div>
+                            <div class="contact-item-value">+44 7384 221139</div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="cv-content fade-in">
+                    <h3>Curriculum Vitae</h3>
+                    
+                    <div class="cv-plain-text">Malaki Amanuel
+
+Birmingham
+07384 221139 | <a href="/cdn-cgi/l/email-protection" class="__cf_email__" data-cfemail="b0ddd1dcd1dbd9d1ddd1dec5d5dcdfd6d6d9d3d9d1dcf0d7ddd1d9dc9ed3dfdd">[email&#160;protected]</a>
+
+Profile
+
+Psychology graduate with a strong foundation in statistical analysis, data interpretation, and research methodology, developed through academic study and professional placement experience. Proficient in R, JASP, G*Power, Excel, and Google Workspace, with a strong interest in machine learning, artificial intelligence, and the ethical use of data-driven technologies. Experienced in analysing data, producing structured reports, and communicating findings clearly. Seeking a role to develop technical expertise while applying analytical and problem-solving skills to real-world challenges.
+
+Key Skills
+
+    • Data analysis and statistical modelling using R, JASP, and G*Power
+    • Research design, data collection, and interpretation of results
+    • Microsoft Excel, Word, PowerPoint, and Google Workspace
+    • Report writing and technical documentation
+    • Strong analytical thinking and problem-solving
+    • Understanding of data ethics, bias, and technology-related behaviour
+    • Accurate record management and attention to detail
+    • Quick to learn new systems, tools, and processes
+    • Clear written and verbal communication
+
+Relevant Experience
+
+Research and Operations Assistant
+MyLurah Digital Health (Placement) | Mar 2026 – May 2026
+
+    • Conducted structured research and analysed data on user conversion, retention, and growth to support planning and decision-making.
+    • Produced benchmark reports by synthesising information from multiple sources into clear and usable documentation.
+    • Managed information accurately and maintained clear records throughout the project lifecycle.
+    • Worked independently and collaboratively within a small team to deliver research outputs to deadline.
+
+Warehouse Operative
+DX Shipping Service | Aug 2025 – Oct 2025
+
+    • Used tracking and scanning systems to maintain accurate records in a fast-paced environment.
+    • Followed procedures carefully, demonstrating reliability, accuracy, and attention to detail.
+
+Night Shift Retail Assistant
+Morrisons | Nov 2024 – Jan 2025
+
+    • Managed stock and deliveries during a busy trading period, showing strong organisation and adaptability.
+    • Demonstrated reliability, time management, and effective teamwork in a high-pressure environment.
+
+Education
+
+BSc Psychology – Keele University | 2022–2025
+
+Developed strong skills in quantitative data analysis, research design, statistical interpretation, and communicating complex information clearly.
+
+Relevant modules include: Statistics for Psychology, Research Design for Psychology, Cyberpsychology, and Science Communication.
+
+A Levels – Psychology (A*), Sports Science (A*), Art (A)
+
+GCSEs including English (7) and Maths (6)</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <footer>
+        <p>// 2026 Malaki Amanuel</p>
+    </footer>
+
+    <!-- CASE STUDY MODALS -->
+
+    <div class="modal-overlay" id="case1">
+        <div class="modal">
+            <button class="modal-close" onclick="closeModal()"><i data-lucide="x"></i></button>
+            <div class="modal-inner">
+                <div class="modal-header">
+                    <span class="modal-module">Work Placement — Keele University</span>
+                    <p class="modal-role">Research Contributor | Growth and Retention Analysis</p>
+                    <h2 class="modal-title">Market Sizing and Growth Projection for MyLurah</h2>
+                </div>
+                
+                <div class="modal-section">
+                    <h3>Overview</h3>
+                    <p>How many users will a culturally specific reproductive health app realistically attract, retain, and grow in its first year? For MyLurah, a tech startup focused on African feminine reproductive health, the answer shapes everything—from investor pitches to product roadmap prioritisation. This case study covers my individual contribution to a 7-person collaborative project: building an evidence-based growth and retention model.</p>
+                </div>
+                
+                <div class="modal-section">
+                    <h3>Methodology</h3>
+                    <p><strong>Benchmark Research:</strong> Triangulated growth and retention data from multiple independent sources—Waitlister aggregated launch data, Business of Apps and Orangesoft industry reports, comparable African digital health platforms (Omomi, Afya Pap, Grace Health), peer-reviewed studies, and regional market analysis.</p>
+                    <p><strong>Projection Modelling:</strong> Combined three independent metrics through a compound model:</p>
+                    <ul>
+                        <li>Waitlist size (1,000–1,500) × conversion rate (13–16%) = launch active users</li>
+                        <li>Launch active users × 90-day retention (10–15%) = retained user base</li>
+                        <li>Retained user base × monthly organic growth (7% compounded) = 12-month projection</li>
+                    </ul>
+                </div>
+
+                <div class="modal-findings">
+                    <h4>Key Findings</h4>
+                    <p><strong>1. Defensible launch conversion: 13–16%</strong> — Aggregated benchmark data placed the realistic median at 13.8% for health and fitness apps. Launch user estimate: 130–240 active users.</p>
+                    <p><strong>2. Retention is the primary constraint</strong> — Reproductive health apps lose 85–90% of users within 90 days. Of 130–240 launch users, only 13–36 would remain after three months.</p>
+                    <p><strong>3. Organic growth is real but modest</strong> — Comparable African digital health platforms showed 7–10% monthly growth when actively managed.</p>
+                    <p><strong>4. Honest 12-month projection: 330–610 users</strong> — Significantly lower than inflated startup forecasts, but defensible and credible for investor conversations.</p>
+                </div>
+
+                <div class="modal-section">
+                    <h3>Applied Recommendations</h3>
+                    <ul>
+                        <li>Prioritise retention over acquisition in year one—85–90% drop-off means features that increase stickiness (community, onboarding, content) have highest leverage</li>
+                        <li>Set investor expectations against benchmarks, not aspirations—defensible forecasts build trust</li>
+                        <li>Use ranges, not point estimates—single-number projections imply false precision</li>
+                        <li>Treat retention metrics as product feedback, not just KPIs</li>
+                    </ul>
+                </div>
+
+                <div class="modal-insight">
+                    <h3>UX Relevance</h3>
+                    <p>This project demonstrates ability to move beyond optimistic assumptions and produce defensible, benchmarked projections. Key transferable skill: translating complex data into actionable strategic recommendations for product teams.</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="modal-overlay" id="case2">
+        <div class="modal">
+            <button class="modal-close" onclick="closeModal()"><i data-lucide="x"></i></button>
+            <div class="modal-inner">
+                <div class="modal-header">
+                    <span class="modal-module">Psychology Project — Keele University</span>
+                    <p class="modal-role">Lead Researcher | Grade: 65 (2:1)</p>
+                    <h2 class="modal-title">Behavioral Drivers of Student Stress</h2>
+                </div>
+                
+                <div class="modal-section">
+                    <h3>Overview</h3>
+                    <p>As student mental health becomes a primary concern for higher education and EdTech providers, understanding the behavioral drivers of stress is critical. This study investigated how two modifiable behaviors—procrastination and physical activity—predict perceived stress in university students.</p>
+                </div>
+                
+                <div class="modal-section">
+                    <h3>Methodology</h3>
+                    <p><strong>Participants:</strong> 149 university students (aged 18–58)</p>
+                    <p><strong>Data Collection:</strong> 15-minute digital survey via Qualtrics with randomized block ordering to mitigate order bias</p>
+                    <p><strong>Validated Scales:</strong> Pure Procrastination Scale (PPS), Godin Leisure-Time Exercise Questionnaire (GLTEQ), Perceived Stress Scale-10 (PSS-10)</p>
+                    <p><strong>Ethics:</strong> Full approval from Psychology Student Project Ethics Committee (SPEC)</p>
+                    <p><strong>Analysis:</strong> Multiple Linear Regression in JASP</p>
+                </div>
+
+                <div class="modal-findings">
+                    <h4>Key Findings</h4>
+                    <p><strong>The Procrastination Trap:</strong> Procrastination was a powerful positive predictor of stress (β=.602, p<.001). It accounted for the majority of the 36.1% total variance explained by the model.</p>
+                    <p><strong>The Exercise Myth:</strong> Contrary to popular belief, leisure-time physical activity was not a significant predictor of perceived stress (β=.008, p=.909).</p>
+                    <p><strong>The Self-Regulation Gap:</strong> Student stress is driven more by cognitive self-regulation than physiological coping resources.</p>
+                </div>
+
+                <div class="modal-section">
+                    <h3>Applied Recommendations</h3>
+                    <ul>
+                        <li>Pivot from wellness to workflow—digital interventions should prioritize task initiation features over generic fitness tracking</li>
+                        <li>Real-time intervention—apps should help users manage the anxiety of starting a task (emotion-regulation failure) rather than just managing schedules</li>
+                        <li>Workflow integration—universities should integrate self-regulation coaching into academic portals</li>
+                    </ul>
+                </div>
+
+                <div class="modal-insight">
+                    <h3>UX Relevance</h3>
+                    <p>Direct insight for student wellbeing and productivity product design: prioritize cognitive self-regulation support over general wellness features. The finding that task management is more proximally linked to stress than exercise shapes feature prioritization decisions.</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="modal-overlay" id="case3">
+        <div class="modal">
+            <button class="modal-close" onclick="closeModal()"><i data-lucide="x"></i></button>
+            <div class="modal-inner">
+                <div class="modal-header">
+                    <span class="modal-module">Cyberpsychology — Keele University</span>
+                    <p class="modal-role">Research Designer | Grade: 65 (2:1)</p>
+                    <h2 class="modal-title">Evaluating Virtual Reality as a Therapeutic Tool</h2>
+                </div>
+                
+                <div class="modal-section">
+                    <h3>Overview</h3>
+                    <p>Can Virtual Reality do what traditional therapy cannot? This research proposal investigated whether VR Exposure Therapy (VRET) could outperform CBT in treating Agoraphobia. The project required synthesising existing clinical literature, identifying gaps, and designing a full research programme.</p>
+                </div>
+                
+                <div class="modal-section">
+                    <h3>Methodology</h3>
+                    <p><strong>Literature Synthesis:</strong> Independent review of peer-reviewed cyberpsychology and clinical psychology literature</p>
+                    <p><strong>Gap Analysis:</strong> Identified three critical gaps: absence of direct comparative studies, underexplored cost-effectiveness, insufficient accounting for individual differences</p>
+                    <p><strong>Experimental Design:</strong> Mixed design controlled experiment (between-subjects and within-subjects) with 50 clinically diagnosed participants</p>
+                    <p><strong>Measure Selection:</strong> Agoraphobia Scale (AS), Panic and Agoraphobia Scale (PAS), Beck Anxiety Inventory (BAI) at baseline, week 4, and week 8</p>
+                    <p><strong>Ethics:</strong> Full BPS compliance including informed consent with 24-hour consideration period</p>
+                </div>
+
+                <div class="modal-findings">
+                    <h4>Research Insights</h4>
+                    <p><strong>VRET's core advantage is customisation:</strong> Unlike in-vivo CBT, VRET allows precise environmental control—adjusting crowd density, noise levels, lighting, and spatial scale.</p>
+                    <p><strong>Presence is the critical variable:</strong> Psychological presence (how "real" the VR environment feels) is the primary driver of VRET efficacy, not the technology itself.</p>
+                    <p><strong>The evidence gap is a design problem:</strong> Absence of robust comparative studies reflects lack of standardised methodology—highlighting need for replicable experimental frameworks.</p>
+                    <p><strong>Cost is a genuine barrier:</strong> VR equipment costs constrain clinical adoption—significant opportunity for health tech products targeting accessible hardware.</p>
+                </div>
+
+                <div class="modal-section">
+                    <h3>Applied Recommendations</h3>
+                    <ul>
+                        <li>Design for presence, not novelty—prioritise immersion quality and environmental realism over feature quantity</li>
+                        <li>Modular environment design—build flexible, configurable virtual spaces rather than fixed linear experiences</li>
+                        <li>Reduce the hardware barrier—design effective experiences for standalone headsets or smartphone-based VR</li>
+                        <li>Measure outcomes, not just engagement—integrate validated clinical measures at key intervals</li>
+                    </ul>
+                </div>
+
+                <div class="modal-insight">
+                    <h3>UX Relevance</h3>
+                    <p>Key insight for immersive experience and health tech design: "presence" is the outcome that matters, not technical sophistication. Products must prioritise immersion quality over feature quantity. Cost barriers shape realistic market positioning.</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="modal-overlay" id="case4">
+        <div class="modal">
+            <button class="modal-close" onclick="closeModal()"><i data-lucide="x"></i></button>
+            <div class="modal-inner">
+                <div class="modal-header">
+                    <span class="modal-module">Research Design — Keele University</span>
+                    <p class="modal-role">Research Designer</p>
+                    <h2 class="modal-title">Dual Methodology Research Design</h2>
+                </div>
+                
+                <div class="modal-section">
+                    <h3>Overview</h3>
+                    <p>Knowing which research method to reach for—and why—is one of the most fundamental skills a UX researcher brings to a product team. This project required designing two complete research studies from scratch: one quantitative, one qualitative, each addressing a distinct human behaviour question.</p>
+                </div>
+                
+                <div class="modal-section">
+                    <h3>Study 1: Quantitative</h3>
+                    <p><strong>Research Question:</strong> Does listening to music while studying affect long-term memory retention in university students?</p>
+                    <p><strong>Design:</strong> Within-subjects experimental design—each participant experienced both conditions, controlling for individual differences</p>
+                    <p><strong>Participants:</strong> Undergraduate students aged 18–25, recruited via convenience sampling</p>
+                    <p><strong>Additional Measure:</strong> Likert-scale questionnaire capturing subjective experience of studying with and without music</p>
+                    <p><strong>Analysis:</strong> Repeated measures ANOVA</p>
+                    <p style="margin-top: 12px;"><strong>Study 2: Qualitative</strong></p>
+                    <p><strong>Research Question:</strong> How do teenagers feel about bullying in secondary school, and what can their lived experiences reveal about intervention needs?</p>
+                    <p><strong>Design:</strong> Phenomenological qualitative design—chosen because bullying is a subjective, emotionally loaded experience</p>
+                    <p><strong>Participants:</strong> Secondary school students aged 11–16 who had experienced or witnessed bullying, recruited via purposive sampling</p>
+                    <p><strong>Data Collection:</strong> 30-minute semi-structured interviews, audio-recorded and transcribed verbatim</p>
+                    <p><strong>Analysis:</strong> Thematic analysis (Braun & Clarke, 2006)</p>
+                    <p><strong>Ethics:</strong> Extensive safeguards including anonymisation via pseudonyms, provision of support helplines post-interview, one-week data withdrawal window</p>
+                </div>
+
+                <div class="modal-findings">
+                    <h4>Methodological Insights</h4>
+                    <p><strong>Method selection is a values decision:</strong> Choosing between quantitative and qualitative methods reflects a fundamental position on what counts as knowledge. In UXR, this is made every time a researcher chooses between an A/B test and a user interview.</p>
+                    <p><strong>Within-subjects designs are powerful but ethically complex:</strong> They eliminate many confounds but introduce order effects and demand characteristics. Counterbalancing was a necessary design safeguard.</p>
+                    <p><strong>Sensitive topic research demands proactive ethical design:</strong> Research with vulnerable or emotionally engaged participants requires additional layers of care that cannot be retrofitted after data collection has begun.</p>
+                    <p><strong>Subjective and objective measures can coexist productively:</strong> How users feel about their performance is often as important as their actual performance—a direct parallel to UXR studies where task completion rates are supplemented by satisfaction ratings.</p>
+                </div>
+
+                <div class="modal-section">
+                    <h3>Applied Recommendations</h3>
+                    <ul>
+                        <li>Match method to question before selecting tools—quantitative answers "how much," qualitative answers "why"</li>
+                        <li>Design exclusion criteria deliberately—poorly defined exclusion criteria introduce confounds that make findings uninterpretable</li>
+                        <li>Build ethical safeguards in at the design stage—ethics are a design constraint, not a compliance checkbox</li>
+                        <li>Capture both behaviour and perception—design studies that capture both for richer, more actionable insights</li>
+                    </ul>
+                </div>
+
+                <div class="modal-insight">
+                    <h3>UX Relevance</h3>
+                    <p>This project demonstrates genuine methodological fluency—ability to think in both quantitative and qualitative modes. A key differentiator in UXR: matching method to question rather than reaching for familiar tools.</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="modal-overlay" id="case5">
+        <div class="modal">
+            <button class="modal-close" onclick="closeModal()"><i data-lucide="x"></i></button>
+            <div class="modal-inner">
+                <div class="modal-header">
+                    <span class="modal-module">Science Communication — Keele University</span>
+                    <p class="modal-role">Science Communicator / Psychology Writer</p>
+                    <h2 class="modal-title">Communicating Science to a Public Audience</h2>
+                </div>
+                
+                <div class="modal-section">
+                    <h3>Overview</h3>
+                    <p>Research findings only create value when they reach the people who need them. This project sits at the intersection of psychological research and public communication—the skill set that sits at the heart of effective UX research practice. The task was to write a critical psychology blog communicating peer-reviewed research on romantic secrecy for general audiences.</p>
+                </div>
+                
+                <div class="modal-section">
+                    <h3>Methodology</h3>
+                    <p><strong>Audience Definition:</strong> Primary audience was explicitly defined as casual readers with no psychology background—required fundamental reorientation from academic writing conventions</p>
+                    <p><strong>Content Strategy:</strong> Narrative hook, problem framing, evidence, and conclusion format—mirroring effective science journalism</p>
+                    <p><strong>Tone Calibration:</strong> Voice that was warm and conversational, lightly irreverent, and rhetorically aware—using humour to make uncomfortable findings more approachable</p>
+                    <p><strong>Iterative Refinement:</strong> Developed through iterative process informed by feedback, personal reflection, and peer workshop discussion. The 400-word reflective component required explicit metacognitive analysis of communication design decisions.</p>
+                </div>
+
+                <div class="modal-findings">
+                    <h4>Key Insights</h4>
+                    <p><strong>Framing determines engagement:</strong> The same research findings can land very differently depending on how they are introduced. Leading with a relatable human scenario before introducing the research created an emotional hook that motivated continued reading.</p>
+                    <p><strong>Humour is a legitimate communication tool:</strong> Strategic wit maintained reader engagement during sections that could otherwise feel dry or lecture-like—mirrors UX writing principles around voice and tone.</p>
+                    <p><strong>Accuracy and accessibility are not mutually exclusive:</strong> With careful word choice and structural discipline, complex psychological findings can be communicated accurately within a 600-word conversational format.</p>
+                    <p><strong>Reflection accelerates skill development:</strong> Articulating why specific choices were made revealed that the most significant communication growth came from metacognition, not just writing practice.</p>
+                </div>
+
+                <div class="modal-section">
+                    <h3>Applied Recommendations</h3>
+                    <ul>
+                        <li>Lead with the human story, not the data—stakeholders engage with findings when they can see themselves in the research</li>
+                        <li>Tone is a design decision—the register in which research is communicated shapes how credible and actionable findings feel</li>
+                        <li>Constraints improve communication—word limits and time-boxed presentations force prioritisation of the most important insights</li>
+                        <li>Build reflection into your process—a brief retrospective after each deliverable accelerates skill development</li>
+                    </ul>
+                </div>
+
+                <div class="modal-insight">
+                    <h3>UX Relevance</h3>
+                    <p>Direct UX writing skill: translating complex findings into compelling, accessible narratives for non-expert stakeholders. The ability to balance scientific credibility with public readability is central to effective research communication.</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="modal-overlay" id="case6">
+        <div class="modal">
+            <button class="modal-close" onclick="closeModal()"><i data-lucide="x"></i></button>
+            <div class="modal-inner">
+                <div class="modal-header">
+                    <span class="modal-module">Qualitative Research Methods — Keele University</span>
+                    <p class="modal-role">Qualitative Researcher</p>
+                    <h2 class="modal-title">Lived Experiences of Cultural Assimilation and Identity</h2>
+                </div>
+                
+                <div class="modal-section">
+                    <h3>Overview</h3>
+                    <p>How does relocating to a foreign country reshape who you are? This qualitative study explored the lived experiences of international students navigating cultural assimilation and personal identity. Using pre-existing interview data from three Keele University international students and alumni, the research applied Reflexive Thematic Analysis to surface the psychological and social processes underlying cultural transition.</p>
+                </div>
+                
+                <div class="modal-section">
+                    <h3>Methodology</h3>
+                    <p><strong>Philosophical Approach:</strong> Experiential epistemological stance—recognising that human experience is inherently subjective and that understanding lived realities requires immersion in individual narratives rather than reduction to numbers</p>
+                    <p><strong>Data Collection:</strong> Pre-existing interview transcripts from 3 participants (Sammyh, Erin, and Vusal) representing diverse national and linguistic backgrounds</p>
+                    <p><strong>Analytic Approach:</strong> Following Braun and Clarke's (2006) six-stage framework: familiarisation, initial coding, theme generation, theme review, theme definition, and write-up</p>
+                    <p><strong>Reflexivity:</strong> Maintained a reflexive diary throughout the analytic process, actively monitoring how personal assumptions shaped interpretation of the data</p>
+                </div>
+
+                <div class="modal-findings">
+                    <h4>Themes Generated</h4>
+                    <p><strong>Theme 1: Identity as Fluid and International</strong></p>
+                    <p>Participants did not describe identity as fixed. Sammyh: "I don't really have an identity. I don't see myself as being from one country or another. I see myself as being quite international." Identity becomes accumulative and adaptive for individuals with cross-cultural experience.</p>
+                    <p><strong>Theme 2: Assimilation is Not Universal—Intersectionality Matters</strong></p>
+                    <p>Language emerged as a critical intersectional variable. Erin noted shared language significantly eased her transition from America to the UK—yet she experienced reverse culture shock upon returning home. Assimilation is bidirectional and cumulative.</p>
+                    <p><strong>Theme 3: Motivation Shapes the Depth of Integration</strong></p>
+                    <p>Vusal's primary motivation for living abroad was pragmatic: "I wouldn't say it's the culture. It is just the opportunities." The depth of cultural assimilation is moderated by underlying migration motivation.</p>
+                </div>
+
+                <div class="modal-section">
+                    <h3>Applied Recommendations</h3>
+                    <ul>
+                        <li>Abandon the "universal user" assumption—assimilation experiences differ significantly based on language, cultural distance, and personal motivation</li>
+                        <li>Design for transition, not just arrival—users oscillate between cultural contexts; products should acknowledge ongoing cultural negotiation</li>
+                        <li>Motivation-aware personalisation—users with instrumental motivations engage differently than those with intrinsic motivations</li>
+                        <li>Qualitative methods are essential here—standardised surveys cannot surface the nuanced, intersectional factors that shape assimilation</li>
+                    </ul>
+                </div>
+
+                <div class="modal-insight">
+                    <h3>UX Relevance</h3>
+                    <p>Key insight for globally diverse or multicultural user base design: assuming a fixed cultural identity as a design variable is an oversimplification. Onboarding and transition experiences must account for individual starting points, not assume a homogeneous user baseline.</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script>
+        // Initialize Lucide icons
+        lucide.createIcons();
+
+        // Navigation active state
+        const sections = document.querySelectorAll('section[id]');
+        const navLinks = document.querySelectorAll('nav a');
+
+        window.addEventListener('scroll', () => {
+            let current = '';
+            sections.forEach(section => {
+                if (window.scrollY >= section.offsetTop - 100) {
+                    current = section.getAttribute('id');
+                }
+            });
+            navLinks.forEach(link => {
+                link.classList.toggle('active', link.getAttribute('href') === `#${current}`);
+            });
+        });
+
+        // Scroll animations
+        const fadeElements = document.querySelectorAll('.fade-in');
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach((entry, index) => {
+                if (entry.isIntersecting) {
+                    setTimeout(() => entry.target.classList.add('visible'), index * 80);
+                }
+            });
+        }, { threshold: 0.1, rootMargin: '0px 0px -50px 0px' });
+        fadeElements.forEach(el => observer.observe(el));
+
+        // Modal functions
+        function openModal(id) {
+            document.getElementById(id).classList.add('active');
+            document.body.style.overflow = 'hidden';
+        }
+
+        function closeModal() {
+            document.querySelectorAll('.modal-overlay').forEach(m => m.classList.remove('active'));
+            document.body.style.overflow = '';
+        }
+
+        document.querySelectorAll('.modal-overlay').forEach(modal => {
+            modal.addEventListener('click', (e) => { if (e.target === modal) closeModal(); });
+        });
+
+        document.addEventListener('keydown', (e) => { if (e.key === 'Escape') closeModal(); });
+    </script>
+<script>(function(){function c(){var b=a.contentDocument||a.contentWindow.document;if(b){var d=b.createElement('script');d.innerHTML="window.__CF$cv$params={r:'a0b637f65957e8fe',t:'MTc4MTQwNzQzMA=='};var a=document.createElement('script');a.src='/cdn-cgi/challenge-platform/scripts/jsd/main.js';document.getElementsByTagName('head')[0].appendChild(a);";b.getElementsByTagName('head')[0].appendChild(d)}}if(document.body){var a=document.createElement('iframe');a.height=1;a.width=1;a.style.position='absolute';a.style.top=0;a.style.left=0;a.style.border='none';a.style.visibility='hidden';document.body.appendChild(a);if('loading'!==document.readyState)c();else if(window.addEventListener)document.addEventListener('DOMContentLoaded',c);else{var e=document.onreadystatechange||function(){};document.onreadystatechange=function(b){e(b);'loading'!==document.readyState&&(document.onreadystatechange=e,c())}}}})();</script></body>
+</html>
