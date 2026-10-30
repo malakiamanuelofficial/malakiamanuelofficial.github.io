@@ -74,32 +74,8 @@
         .top-bar {
             display: flex;
             align-items: center;
-            justify-content: space-between;
+            justify-content: flex-end;
             margin-bottom: 24px;
-        }
-
-        .brand-link {
-            display: flex;
-            align-items: center;
-            gap: 10px;
-            text-decoration: none;
-            color: var(--text-main);
-            font-weight: 700;
-            font-size: 1.05rem;
-        }
-
-        .brand-badge {
-            width: 32px;
-            height: 32px;
-            border-radius: var(--radius-sm);
-            background: var(--text-main);
-            color: var(--bg);
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-size: 0.85rem;
-            font-weight: 700;
-            font-family: var(--font-mono);
         }
 
         .theme-btn {
@@ -135,39 +111,6 @@
             display: flex;
             align-items: center;
             gap: 20px;
-        }
-
-        .profile-avatar-box {
-            flex-shrink: 0;
-            width: 76px;
-            height: 76px;
-            border-radius: var(--radius-md);
-            overflow: hidden;
-            border: 1px solid var(--border);
-            background: var(--bg);
-            display: flex;
-            align-items: center;
-            justify-content: center;
-        }
-
-        .profile-avatar-box img {
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
-            display: block;
-        }
-
-        .avatar-fallback-initials {
-            display: none;
-            width: 100%;
-            height: 100%;
-            align-items: center;
-            justify-content: center;
-            background: var(--text-main);
-            color: var(--bg);
-            font-size: 1.5rem;
-            font-weight: 700;
-            font-family: var(--font-mono);
         }
 
         .profile-title {
@@ -685,6 +628,50 @@
             background: var(--accent-red-soft);
         }
 
+        /* Contact photo */
+        .contact-layout {
+            display: grid;
+            grid-template-columns: 240px 1fr;
+            gap: 32px;
+            align-items: start;
+        }
+
+        .contact-photo-box {
+            width: 240px;
+            aspect-ratio: 4 / 5;
+            border-radius: var(--radius-lg);
+            overflow: hidden;
+            border: 1px solid var(--border);
+            background: var(--bg);
+            box-shadow: var(--shadow);
+        }
+
+        .contact-photo-box img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            object-position: center 20%; /* keeps the face in frame */
+            display: block;
+        }
+
+        .contact-photo-fallback {
+            display: none;
+            width: 100%;
+            height: 100%;
+            align-items: center;
+            justify-content: center;
+            background: var(--text-main);
+            color: var(--bg);
+            font-size: 3rem;
+            font-weight: 700;
+            font-family: var(--font-mono);
+        }
+
+        @media (max-width: 768px) {
+            .contact-layout { grid-template-columns: 1fr; }
+            .contact-photo-box { width: 100%; max-width: 260px; margin: 0 auto; }
+        }
+
         /* Toast */
         .toast {
             position: fixed;
@@ -754,10 +741,6 @@
     <div class="container">
         <!-- Top bar -->
         <div class="top-bar">
-            <a href="#" class="brand-link">
-                <span class="brand-badge">MA</span>
-                <span>Malaki Amanuel</span>
-            </a>
             <button class="theme-btn" id="themeBtn" onclick="toggleTheme()">
                 <span id="themeBtnText">Dark Mode</span>
             </button>
@@ -766,10 +749,6 @@
         <!-- Header Profile & Education (Placed High Up) -->
         <div class="profile-card">
             <div class="profile-header">
-                <div class="profile-avatar-box">
-                    <img src="photo.jpg" alt="Malaki Amanuel" onerror="this.style.display='none'; document.getElementById('avatarFallback').style.display='flex';">
-                    <div class="avatar-fallback-initials" id="avatarFallback">MA</div>
-                </div>
                 <div>
                     <h1 class="profile-title">Malaki Amanuel</h1>
                     <div class="profile-subtitle">Psychology Graduate (BSc Hons 2:1) </div>
@@ -1105,39 +1084,48 @@ ADDITIONAL INFORMATION
              ==================================================================== -->
         <div class="tab-content" id="tab-contact">
             <div class="contact-box">
-                <h3>Contact Information</h3>
-                <p class="contact-intro">
-                    I am actively seeking roles in data analysis, quantitative research, or research operations such as psychology assistant. Please feel free to get in touch directly via email or phone.
-                </p>
+                <div class="contact-layout">
+                    <div class="contact-photo-box">
+                        <img src="photo.jpg" alt="Malaki Amanuel" onerror="this.style.display='none'; document.getElementById('contactPhotoFallback').style.display='flex';">
+                        <div class="contact-photo-fallback" id="contactPhotoFallback">MA</div>
+                    </div>
 
-                <div class="contact-channels-grid">
-                    <div class="contact-channel-item">
-                        <span class="channel-name">Email Address</span>
-                        <span class="channel-val">malakiamanuelofficial@gmail.com</span>
-                        <div class="channel-actions">
-                            <a href="mailto:malakiamanuelofficial@gmail.com" class="mini-btn">Send Email</a>
-                            <button class="mini-btn" onclick="copyText('malakiamanuelofficial@gmail.com', 'Email copied')">Copy</button>
+                    <div class="contact-main">
+                        <h3>Contact Information</h3>
+                        <p class="contact-intro">
+                            I am actively seeking roles in data analysis, quantitative research, or research operations such as psychology assistant. Please feel free to get in touch directly via email or phone.
+                        </p>
+
+                        <div class="contact-channels-grid">
+                            <div class="contact-channel-item">
+                                <span class="channel-name">Email Address</span>
+                                <span class="channel-val">malakiamanuelofficial@gmail.com</span>
+                                <div class="channel-actions">
+                                    <a href="mailto:malakiamanuelofficial@gmail.com" class="mini-btn">Send Email</a>
+                                    <button class="mini-btn" onclick="copyText('malakiamanuelofficial@gmail.com', 'Email copied')">Copy</button>
+                                </div>
+                            </div>
+
+                            <div class="contact-channel-item">
+                                <span class="channel-name">Phone Number</span>
+                                <span class="channel-val">07384 221139</span>
+                                <div class="channel-actions">
+                                    <a href="tel:+447384221139" class="mini-btn">Call</a>
+                                    <button class="mini-btn" onclick="copyText('07384 221139', 'Phone number copied')">Copy</button>
+                                </div>
+                            </div>
+
+                            <div class="contact-channel-item">
+                                <span class="channel-name">Location</span>
+                                <span class="channel-val">Birmingham, West Midlands, UK</span>
+                                <span style="font-size: 0.8rem; color: var(--text-subtle); margin-top: 4px;">Open to on-site, hybrid, or remote positions.</span>
+                            </div>
+
+                            <div class="contact-channel-item">
+                                <span class="channel-name">Languages</span>
+                                <span class="channel-val">English (Native), Tigrinya (Fluent)</span>
+                            </div>
                         </div>
-                    </div>
-
-                    <div class="contact-channel-item">
-                        <span class="channel-name">Phone Number</span>
-                        <span class="channel-val">07384 221139</span>
-                        <div class="channel-actions">
-                            <a href="tel:+447384221139" class="mini-btn">Call</a>
-                            <button class="mini-btn" onclick="copyText('07384 221139', 'Phone number copied')">Copy</button>
-                        </div>
-                    </div>
-
-                    <div class="contact-channel-item">
-                        <span class="channel-name">Location</span>
-                        <span class="channel-val">Birmingham, West Midlands, UK</span>
-                        <span style="font-size: 0.8rem; color: var(--text-subtle); margin-top: 4px;">Open to on-site, hybrid, or remote positions.</span>
-                    </div>
-
-                    <div class="contact-channel-item">
-                        <span class="channel-name">Languages</span>
-                        <span class="channel-val">English (Native), Tigrinya (Fluent)</span>
                     </div>
                 </div>
             </div>
